@@ -132,45 +132,45 @@ public class MainActivity extends AppCompatActivity {
         CameraX.bindToLifecycle(this, preview, imgCap);
     }
 
-    private void updateTransform() {
-        /*
-         * compensates the changes in orientation for the viewfinder, bc the rest of the layout stays in portrait mode.
-         * methinks :thonk:
-         * imgCap does this already, this class can be commented out or be used to optimise the preview
-         */
+    // private void updateTransform() {
+    //     /*
+    //      * compensates the changes in orientation for the viewfinder, bc the rest of the layout stays in portrait mode.
+    //      * methinks :thonk:
+    //      * imgCap does this already, this class can be commented out or be used to optimise the preview
+    //      */
 
-        Matrix mx = new Matrix();
-        float w = textureView.getMeasuredWidth();
-        float h = textureView.getMeasuredHeight();
+    //     Matrix mx = new Matrix();
+    //     float w = textureView.getMeasuredWidth();
+    //     float h = textureView.getMeasuredHeight();
 
-        float cX = w / 2f;//calc centre of the viewfinder
-        float cY = h / 2f;
+    //     float cX = w / 2f;//calc centre of the viewfinder
+    //     float cY = h / 2f;
 
-        int rotationDgr;
-        int rotation = (int)textureView.getRotation();//cast to int bc switches don't like floats
+    //     int rotationDgr;
+    //     int rotation = (int)textureView.getRotation();//cast to int bc switches don't like floats
 
-        switch(rotation){//correct output to account for display rotation
-            case Surface.ROTATION_0:
-                rotationDgr = 0;
-                break;
-            case Surface.ROTATION_90:
-                rotationDgr = -90;
-                break;
-            case Surface.ROTATION_180:
-                rotationDgr = -180;
-                break;
-            case Surface.ROTATION_270:
-                rotationDgr = -270;
-                break;
-            default:
-                return;
-        }
+    //     switch(rotation){//correct output to account for display rotation
+    //         case Surface.ROTATION_0:
+    //             rotationDgr = 0;
+    //             break;
+    //         case Surface.ROTATION_90:
+    //             rotationDgr = -90;
+    //             break;
+    //         case Surface.ROTATION_180:
+    //             rotationDgr = -180;
+    //             break;
+    //         case Surface.ROTATION_270:
+    //             rotationDgr = -270;
+    //             break;
+    //         default:
+    //             return;
+    //     }
 
-        mx.postRotate((float)rotationDgr, cX, cY);
-        textureView.setTransform(mx);//apply transformations to textureview
+    //     mx.postRotate((float)rotationDgr, cX, cY);
+    //     textureView.setTransform(mx);//apply transformations to textureview
 
 
-    }
+    // }
 
 //    @Override
 //    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
